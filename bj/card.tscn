@@ -6,6 +6,7 @@
 [node name="CardSprite" type="Sprite2D"]
 z_index = -1
 texture_filter = 1
-scale = Vector2(2.5, 2.5)
+rotation = -2.4609141
+scale = Vector2(0.106, 0.106)
 texture = ExtResource("1_kikvd")
 script = ExtResource("2_rjlel")

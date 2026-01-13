@@ -13,6 +13,10 @@ func check_unlock() -> void:
 		bet_options_unlocked.append(bet_options_locked[0])
 		bet_options_locked.remove_at(0)
 		print(bet_options_unlocked)
+	#if bet_options_unlocked.size() > 1:
+		#if money <= bet_options_unlocked[-1]:
+			#bet_options_locked.append(bet_options_unlocked[-1])
+			#bet_options_unlocked.remove_at[-1]
 
 
 # Called when the node enters the scene tree for the first time.
