@@ -1,0 +1,168 @@
+[gd_scene load_steps=16 format=3 uid="uid://ndfwftu7etr0"]
+
+[ext_resource type="Script" uid="uid://pkw3nc4fhq88" path="res://start_hand.gd" id="1_cm0pq"]
+[ext_resource type="Script" uid="uid://di7kqab5koeu2" path="res://GameManager.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://cj0cnb7t1ecm6" path="res://hit.gd" id="2_fos0i"]
+[ext_resource type="Script" uid="uid://td0k8oh8bich" path="res://stand.gd" id="3_3dxm6"]
+[ext_resource type="Script" uid="uid://c6jjloi5b53is" path="res://lose.gd" id="4_lgr22"]
+[ext_resource type="Script" uid="uid://76vjvm13uw8o" path="res://win.gd" id="4_trn2v"]
+[ext_resource type="Script" uid="uid://b342mjgh4mt7w" path="res://house.gd" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://blvh7o2bqwex0" path="res://money_manager.gd" id="6_3dxm6"]
+[ext_resource type="Script" uid="uid://dt7qhy4dbc18c" path="res://push.gd" id="6_03owx"]
+[ext_resource type="Shader" uid="uid://88odir6yfu67" path="res://scroll.gdshader" id="10_20pc6"]
+[ext_resource type="Texture2D" uid="uid://dtvndxe72pa2c" path="res://assets/Purple_Nebula_08-1024x1024.png" id="10_wkp8b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_glv2v"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dxm6"]
+font_size = 118
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_03owx"]
+font_size = 118
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vvyt"]
+shader = ExtResource("10_20pc6")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Start Hand" type="Button" parent="."]
+offset_left = -551.0
+offset_top = -310.0
+offset_right = -378.0
+offset_bottom = -263.0
+text = "Start Hand"
+script = ExtResource("1_cm0pq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Hit" type="Button" parent="."]
+offset_left = 295.0
+offset_top = 10.0
+offset_right = 553.0
+offset_bottom = 153.0
+text = "Hit"
+script = ExtResource("2_fos0i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Stand" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 168.0
+offset_right = 554.0
+offset_bottom = 311.0
+text = "Stand"
+script = ExtResource("3_3dxm6")
+metadata/_edit_use_anchors_ = true
+
+[node name="BetPlus" type="Button" parent="."]
+offset_left = -539.0
+offset_top = -153.0
+offset_right = -508.0
+offset_bottom = -126.0
+text = "+"
+
+[node name="BetMinus" type="Button" parent="."]
+offset_left = -502.0
+offset_top = -153.0
+offset_right = -471.0
+offset_bottom = -122.0
+text = "-"
+
+[node name="PlayerCardValue" type="Label" parent="."]
+offset_left = -545.0
+offset_top = 224.0
+offset_right = -191.0
+offset_bottom = 293.0
+text = "Player: 0"
+label_settings = SubResource("LabelSettings_glv2v")
+
+[node name="HouseCardValue" type="Label" parent="."]
+offset_left = 212.0
+offset_top = -323.0
+offset_right = 566.0
+offset_bottom = -254.0
+text = "House: 0"
+label_settings = SubResource("LabelSettings_glv2v")
+
+[node name="Money" type="Label" parent="."]
+offset_left = -542.0
+offset_top = -245.0
+offset_right = -480.0
+offset_bottom = -222.0
+text = "Money: "
+
+[node name="BetSize" type="Label" parent="."]
+offset_left = -542.0
+offset_top = -180.0
+offset_right = -480.0
+offset_bottom = -157.0
+text = "Bet Size: "
+
+[node name="Win" type="Label" parent="."]
+visible = false
+offset_left = -264.0
+offset_top = -180.0
+offset_right = 275.0
+offset_bottom = 147.0
+text = "You Won!
+     YAY"
+label_settings = SubResource("LabelSettings_3dxm6")
+script = ExtResource("4_trn2v")
+
+[node name="Lose" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -264.0
+offset_top = -178.0
+offset_right = 275.0
+offset_bottom = 149.0
+text = "You Lost!
+      XD"
+label_settings = SubResource("LabelSettings_3dxm6")
+script = ExtResource("4_lgr22")
+
+[node name="Push" type="Label" parent="."]
+visible = false
+offset_left = -143.0
+offset_top = -85.0
+offset_right = 137.0
+offset_bottom = 77.0
+text = "Push"
+label_settings = SubResource("LabelSettings_03owx")
+script = ExtResource("6_03owx")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_glv2v")
+
+[node name="House" type="Node" parent="."]
+script = ExtResource("5_fos0i")
+
+[node name="MoneyManager" type="Node" parent="."]
+script = ExtResource("6_3dxm6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+light_mask = 512
+visibility_layer = 512
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5vvyt")
+offset_left = -576.0
+offset_top = -323.0
+offset_right = 576.0
+offset_bottom = 822.0
+mouse_filter = 2
+texture = ExtResource("10_wkp8b")
+
+[connection signal="pressed" from="Start Hand" to="Start Hand" method="_on_pressed"]
+[connection signal="pressed" from="Start Hand" to="Hit" method="_on_start_hand_pressed"]
+[connection signal="pressed" from="Start Hand" to="Stand" method="_on_start_hand_pressed"]
+[connection signal="pressed" from="Start Hand" to="GameManager" method="_on_start_hand_pressed"]
+[connection signal="pressed" from="Hit" to="Hit" method="_on_pressed"]
+[connection signal="pressed" from="Hit" to="GameManager" method="_on_button_pressed"]
+[connection signal="pressed" from="Stand" to="GameManager" method="_on_stand_pressed"]
+[connection signal="pressed" from="BetPlus" to="MoneyManager" method="_on_bet_plus_pressed"]
+[connection signal="pressed" from="BetMinus" to="MoneyManager" method="_on_bet_minus_pressed"]
