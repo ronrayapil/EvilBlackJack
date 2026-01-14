@@ -230,14 +230,17 @@ var cards = {
 @onready var hit_button = get_node("../Hit")
 @onready var stand_button = get_node("../Stand")
 @onready var losetext = get_node("../Lose")
+@onready var handsplayedtext = get_node("../Hands Played")
 @onready var wintext = get_node("../Win")
 @onready var pushtext = get_node("../Push")
 @onready var moneymanager = get_node("../MoneyManager")
-
+@onready var handsplayed = 0
 #----START HAND----
 func _on_start_hand_pressed() -> void:
-
+	handsplayed +=1
 	var playertext ="Player : %s"
+	var handsplayedt ="Hands Played : %s"
+	handsplayedtext.text = handsplayedt % handsplayed
 	aceok = true
 	acetext = false
 	player = 0
